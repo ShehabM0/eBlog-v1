@@ -64,6 +64,11 @@ a {
     border-radius: 5px;
 }
 
+#create-post {
+    margin: 0 40px;
+    color: var(--wht);
+}
+
 .login:hover, .signup:hover{
     background-color: var(--bv);
     transition: 0.3s;
