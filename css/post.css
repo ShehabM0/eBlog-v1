@@ -23,6 +23,10 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 .header{
     background-color: var(--blk2);
     position: fixed;
@@ -149,7 +153,11 @@ a {
     justify-content: center;
     align-items: center;
     margin-bottom: 35px;
-    
+}
+
+#create-post {
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
 }
 
 .Edit, .Delete{

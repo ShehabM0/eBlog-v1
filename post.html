@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/post.css" />
     <link rel="stylesheet" href="css/create.css" />
+    <link rel="stylesheet" href="css/edit.css" />
     <title>Post</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +24,7 @@
           <a href="index.html">
             <span class="logo"> e<span>B</span>log </span>
           </a>
-          <a href="#" id="create-post">Create Post</a>
+          <button id="create-post">Create Post</button>
         </div>
         <span>
           <a href="#" class="signup">SignUp</a>
@@ -32,12 +33,12 @@
       </div>
     </div>
 
-    <div class="modal modal-container">
-      <div class="modal modal-header">
-        <button class="close-btn" id="close-btn">&times;</button>
+    <div class="create-modal modal-container">
+      <div class="create-modal modal-header">
+        <button class="close-btn" id="create-close-btn">&times;</button>
       </div>
-      <div class="modal modal-body">
-        <form action="http://google.com.sa" method="POST">
+      <div class="create-modal modal-body">
+        <form action="http://stackoverflow.com/" method="POST">
           <!-- title -->
           <label for="title">
             Title
@@ -71,7 +72,7 @@
           <!-- buttons -->
           <input
             type="submit"
-            value="Submit"
+            value="Create"
             id="submit-button"
             class="buttons"
           />
@@ -83,7 +84,7 @@
 
     <div class="img-container">
       <div class="img">
-        <img src="assets/9.jpg" alt="" />
+        <img src="assets/11.jpg" alt="" />
       </div>
     </div>
 
@@ -123,11 +124,56 @@
 
     <div class="buttons">
       <div class="buttons-container">
-        <a href="#" class="Edit">Edit</a><a href="#" class="Delete">Delete</a>
+        <button class="Edit" id="edit-post">Edit</button><button class="Delete">Delete</button>
       </div>
     </div>
 
-    <div class="modal overlay"></div>
+    <div class="edit-modal modal-container">
+      <div class="edit-modal modal-header">
+        <button class="close-btn" id="edit-close-btn">&times;</button>
+      </div>
+      <div class="edit-modal modal-body">
+        <form action="https://www.youtube.com/" method="POST">
+          <!-- title -->
+          <label for="title">
+            Title
+          </label>
+          <input
+            type="text"
+            id="title"
+            placeholder="type the post title.."
+          />
+          <!-- image -->
+          <label for="image">
+            Image
+          </label>
+          <input
+            type="text"
+            id="image"
+            placeholder="type the post img number.."
+          />
+          <!-- body  -->
+          <label for="body">
+            Body
+          </label>
+          <textarea
+            type="text"
+            id="text-body"
+            placeholder="type the post body.."
+          ></textarea>
+          <!-- buttons -->
+          <input
+            type="submit"
+            value="Edit"
+            id="submit-button"
+            class="buttons"
+          />
+        </form>
+      </div>
+    </div>
+
+  <div class="create-modal overlay"></div> 
+  <div class="edit-modal overlay"></div> 
 
   </body>
 </html>

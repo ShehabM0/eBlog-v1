@@ -19,7 +19,7 @@ img{
     width: 100%;
 }
 
-.create-modal.overlay {
+.edit-modal.overlay {
     position: fixed;
     top: 0;right: 0;bottom: 0;left: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -27,12 +27,12 @@ img{
     pointer-events: none;
 }
 
-.create-modal.overlay.active {
+.edit-modal.overlay.active {
     opacity: 1;
     pointer-events: all;
 }
 
-.create-modal.modal-container {
+.edit-modal.modal-container {
     position: fixed;
     background-color: var(--wht);
     top: 50%; left: 50%;
@@ -44,53 +44,53 @@ img{
     border-radius: 20px;
 }
 
-.create-modal.modal-container.active {
+.edit-modal.modal-container.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     
 }
 
-.create-modal.modal-header{
+.edit-modal.modal-header{
     display: flex;
     justify-content: flex-end;
     margin-bottom: -40px;
 }
 
-.create-modal.modal-header button {
+.edit-modal.modal-header button {
     background: none;
     border: none;
     margin: 20px;
     font-weight: 600;
 }
 
-.create-modal.modal-header button:hover {
+.edit-modal.modal-header button:hover {
     background-color: rgb(195, 33, 33);
     border-radius: 100px;
 }
 
-.create-modal.modal-body form label, input, textarea {
+.edit-modal.modal-body form label, input, textarea {
     display: block;
     width: 50%;
     margin: 10px auto;
 }
 
-.create-modal.modal-body form input, textarea{
+.edit-modal.modal-body form input, textarea{
     border: 2px solid black;
     border-radius: 8px;
     resize: none;
 }
 
-.create-modal.modal-body form label {
+.edit-modal.modal-body form label {
     font-weight: 500;
 }
 
-.create-modal.modal-body form #submit-button{
+.edit-modal.modal-body form #submit-button{
     margin-top: 20px;
     cursor: pointer;
     font-weight: 600;
 }
 
-.create-modal.modal-body form #submit-button:hover{
+.edit-modal.modal-body form #submit-button:hover{
     color: var(--wht);
     background-color: var(--bv);
     transition: 0.3s;
