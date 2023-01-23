@@ -39,6 +39,7 @@ button{
 }
 
 .container {
+    margin-top: 30px;
     position: absolute;
     display: grid;
     grid-template-columns: repeat(2, 500px);
