@@ -59,3 +59,17 @@ function inactiveModel(modal) {
   modal.forEach(elem => elem.classList.remove('active'))
   createPost_switcherFlag = true
 }
+
+
+// alert message window
+const alert = document.querySelector('.alert-msg')
+if(alert)
+{
+  alert.addEventListener('click', () => {
+    alert.style.display = 'none'
+  })
+  setTimeout(() => {
+    alert.style.display = 'none'
+  }, 5000)
+}
+
