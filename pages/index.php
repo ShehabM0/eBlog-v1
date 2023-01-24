@@ -1,54 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/card.css">
-    <link rel="stylesheet" href="css/create.css">
-    <link rel="stylesheet" href="css/alert.css">
-    <title>eBlog</title>
-
-    <!-- fonts -->
-    <link 
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    />
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com" crossorigin 
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script defer src="app.js"></script>
-  </head>
-  <body>
-
-
-    <div class="header">
-      <div class="nav-container">
-        <a href="index.html">
-          <span class="logo">
-              e<span>B</span>log
-          </span>
-        </a>
-        <span>
-            <a href="signup.html" class="signup">SignUp</a>
-            <a href="login.html" class="login">Login</a>
-        </span>
-      </div>  
-    </div>
-
-
-    <div class="alert-msg">
-      <button class="close-btn">&times;</button>
-      <p>this is alert message</p>
-    </div>
-
 
     <div class="middle">
         <div class="text-container">
@@ -112,3 +61,5 @@
 
   </body>
 </html>
+
+

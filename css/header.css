@@ -55,14 +55,22 @@ img{
     color: var(--bv);
 }
 
-.header .nav-container span:nth-child(2) .login, .signup{
+.header .nav-container span:nth-child(2) .login, .signup, .logout{
     color: var(--wht);
     padding: 5px 10px;
     border: 1.5px solid;
     border-radius: 5px;
 }
 
-.login:hover, .signup:hover{
+.header .nav-container span:nth-child(2) .logout {
+    color: var(--wht);
+    padding: 5px 10px;
+    border: 1.5px solid;
+    border-radius: 5px;
+}
+
+.login:hover, .signup:hover, .logout:hover{
     background-color: var(--bv);
     transition: 0.3s;
 }
+
