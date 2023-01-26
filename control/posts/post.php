@@ -59,7 +59,7 @@ if(isset($_POST["post-create-form"])) {
 
         $message = "Your post has been created successfully.";
         array_push($_SESSION['messages'], $message);
-        header("location:/blog/pages/posts/show.php?id=$new_post_id");
+        header("location:/blog/pages/posts/post.php?id=$new_post_id");
     }
     // else: data is invalid, error & redirect to create
     else if(!$valid_form)
@@ -106,7 +106,7 @@ if(isset($_POST["post-update-form"])) {
         // Redirect to show.php with id = post_id
         $message="Your Post has been updated successfully.";
         array_push($_SESSION['messages'],$message);
-        header("location: /blog/pages/posts/show.php?id=$post_id");
+        header("location: /blog/pages/posts/post.php?id=$post_id");
     }
     // else: form is invalid (something's missing or empty)
     else if(!$valid_form)
