@@ -12,7 +12,7 @@ function checkForm($array, $keys)
 
 function checkUsername($array, $key) 
 {
-    if(strlen($array["$key"]) < 4)
+    if(strlen($array["$key"]) < 4 || strlen($array["$key"]) > 30)
         return false;
     return true;
 }

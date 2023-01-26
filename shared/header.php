@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="/blog/css/header.css">
     <link rel="stylesheet" href="/blog/css/home.css">
     <link rel="stylesheet" href="/blog/css/card.css">
-    <link rel="stylesheet" href="/blog/css/create.css">
     <link rel="stylesheet" href="/blog/css/alert.css">
     <link rel="stylesheet" href="/blog/css/auth.css">
-    <link rel="stylesheet" href="/blog/css/post.css" />
-    <link rel="stylesheet" href="/blog/css/create.css" />
-    <link rel="stylesheet" href="/blog/css/edit.css" />
+    <link rel="stylesheet" href="/blog/css/post.css">
+    <link rel="stylesheet" href="/blog/css/create.css">
+    <link rel="stylesheet" href="/blog/css/edit.css">
     <title>eBlog</title>
 
     <!-- fonts -->
@@ -39,7 +38,7 @@
     <div class="header">
       <div class="nav-container">
         <?php if(!isset($_SESSION["current_user"])) { ?>
-        <a href="/blog/index.php">
+        <a href="/blog/">
           <span class="logo">
               e<span>B</span>log
           </span>
@@ -50,7 +49,7 @@
         </span>
         <?php } else { ?>
           <div class="left-side">
-            <a href="/blog/pages/index.php">
+            <a href="/blog/">
               <span class="logo"> e<span>B</span>log </span>
             </a>
             <button id="create-post">Create Post</button>
@@ -61,11 +60,62 @@
           </span>
         <?php } ?>
       </div>  
-    </div>
+    </div>  
 
+
+    <div class="create-modal modal-container">
+      <div class="create-modal modal-header">
+        <button class="close-btn" id="create-close-btn">&times;</button>
+      </div>
+      <div class="create-modal modal-body">
+        <form action="http://stackoverflow.com/" method="POST">
+          <!-- title -->
+          <label for="title">
+            Title
+            <span style="color: red">*</span>
+          </label>
+          <input
+            type="text"
+            id="title"
+            placeholder="type the post title.."
+          />
+          <!-- image -->
+          <label for="image">
+            Image
+            <span style="color: red">*</span>
+          </label>
+          <input
+            type="text"
+            id="image"
+            placeholder="type the post img number.."
+          />
+          <!-- body  -->
+          <label for="body">
+            Body
+            <span style="color: red">*</span>
+          </label>
+          <textarea
+            type="text"
+            id="text-body"
+            placeholder="type the post body.."
+          ></textarea>
+          <!-- buttons -->
+          <input
+            type="submit"
+            value="Create"
+            id="submit-button"
+            class="buttons"
+          />
+        </form>
+
+
+          
     <?php foreach($_SESSION["messages"] as $msg) { ?>
       <div class="alert-msg">
         <button class="close-btn">&times;</button>
         <p><?= $msg ?></p>
       </div>
-    <?php } $_SESSION["messages"] = []; ?>
+    <?php } $_SESSION["messages"] = []; ?> 
+
+      </div>
+    </div>

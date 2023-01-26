@@ -19,6 +19,7 @@ $posts = $_SESSION["posts"];
               $user_id = $post["user_id"];
               $user = $users[$user_id-1];
       ?>
+      <a href="/blog/pages/posts/post.php?id=<?= $post["id"] ?>" id="post-link">
         <div class="post">
           <img src="<?="/blog/assets/".$post['img']?>" alt="">
           <h3><?= $post["title"] ?></h3>
@@ -28,17 +29,21 @@ $posts = $_SESSION["posts"];
             <p><?= $user["username"] ?></p>
           </div>
         </div>
+      </a>
       <?php } ?>
+    </div>
 
-      <?php 
-        if(empty($_SESSION['posts']))
-        {
-            $message="There are no posts available";
-            array_push($_SESSION['messages'],$message);
-        }
-      ?>
+
+    <?php 
+      if(empty($_SESSION['posts']))
+      {
+          $message="There are no posts available";
+          array_push($_SESSION['messages'],$message);
+      }
+    ?>
+
+    <!-- create post window background -->
+    <div class="create-modal overlay"></div>
 
   </body>
 </html>
-
-

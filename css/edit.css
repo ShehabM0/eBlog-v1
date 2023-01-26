@@ -1,11 +1,3 @@
-*{
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-}
 :root{
     --wht: #fff;
     --blk1: #172317;
@@ -17,6 +9,10 @@ a{
 }
 img{
     width: 100%;
+}
+
+label {
+    padding-left: 20px;
 }
 
 .edit-modal.overlay {
@@ -71,13 +67,17 @@ img{
 .edit-modal.modal-body form label, input, textarea {
     display: block;
     width: 50%;
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
-.edit-modal.modal-body form input, textarea{
+.edit-modal.modal-body form input, textarea {
     border: 2px solid black;
     border-radius: 8px;
     resize: none;
+}
+
+.edit-modal.modal-body form textarea {
+    width: 46%;
 }
 
 .edit-modal.modal-body form label {

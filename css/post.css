@@ -1,12 +1,3 @@
-* {
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-    font-size: 22px;
-    padding: 0;
-    margin: 0;
-}
-
 :root {
     --blk1: #172317;
     --blk2: #1a1e12;
@@ -27,55 +18,8 @@ button {
     cursor: pointer;
 }
 
-.header{
-    background-color: var(--blk2);
-    position: fixed;
-    width: 100%;
-    padding: 0 100px;
-    /* handle card's hover overflow over the nav */
-    /* top: 0; 
-    left: 0; */
-    z-index: 200;
-}
-
-.header .nav-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0;
-}
-
-.header .nav-container .logo {
-    color:var(--wht);
-    font-size: 1.35rem;
-    font-weight: 600;
-    user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
-
-.header .nav-container .logo span{
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--bv);
-}
-
-.header .nav-container span:nth-child(2) .login, .signup{
-    color: var(--wht);
-    padding: 5px 10px;
-    border: 1.5px solid;
-    border-radius: 5px;
-}
-
-#create-post {
-    margin: 0 40px;
-    color: var(--wht);
-}
-
-.login:hover, .signup:hover{
-    background-color: var(--bv);
-    transition: 0.3s;
+#post-link {
+    color: var(--blk1);
 }
 
 .img-bg {
@@ -156,6 +100,8 @@ button {
 }
 
 #create-post {
+    padding-left: 10px;
+    color: var(--wht);
     background-color: rgba(0,0,0,0);
     cursor: pointer;
 }
