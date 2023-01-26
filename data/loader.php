@@ -5,12 +5,12 @@
             "shehab" => [
                 "id" => 1,
                 "username" => "shehab",
-                "password" => "12345",
+                "password" => "123456",
             ],
             "maram" => [
                 "id" => 2,
                 "username" => "maram",
-                "password" => "54321",
+                "password" => "654321",
             ],
         ];
 

@@ -9,7 +9,7 @@ require_once "../../shared/header.php";
           </div>
         </div>
         <div class="form-container">
-          <form action="/blog/control/auth.php" method="POST">
+          <form action="/blog/control/auth/auth.php" method="POST">
             <h2>Create an account</h2>
             <input
               type="text"

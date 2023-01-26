@@ -1,22 +1,42 @@
 <?php
 if(!isset($_SESSION)) 
     session_start();
-?>
-<?php
+
 function checkForm($array, $keys) 
 {
     foreach($keys as $key)
-        if(!isset($array["$key"]) || empty($array["$key"]) || strlen($array["$key"]) < 3)
+        if(!isset($array["$key"]) || empty($array["$key"]))
             return false;
+    return true;
+}
+
+function checkUsername($array, $key) 
+{
+    if(strlen($array["$key"]) < 4)
+        return false;
+    return true;
+}
+
+function checkPass($array, $key)
+{
+    if(strlen($array["$key"]) < 6)
+        return false;
     return true;
 }
 
 if(isset($_POST["regform"])) {
     // username, password, password_confirm
-    $data_is_valid = checkForm($_POST, ["username", "password", "password_confirm"]);
-    if(!$data_is_valid)
+    $valid_data = checkForm($_POST, ["username", "password", "password_confirm"]);
+    $valid_username = checkUsername($_POST, "username");
+    $valid_pass = checkPass($_POST, "password");
+    if(!$valid_data || !$valid_username || !$valid_pass)
     {
-        $error = "username or password is invalid.";
+        if(!$valid_data)
+            $error = "invalid Registration data!";
+        else if(!$valid_username)
+            $error = "username is too short!";
+        else if(!$valid_pass)
+            $error = "password is too short!";
         array_push($_SESSION["messages"], $error);
         header("location: /blog/pages/auth/signup.php");
         return;
@@ -26,7 +46,7 @@ if(isset($_POST["regform"])) {
     $password_conf = $_POST["password_confirm"];
     // If account already exists, redirect to register
     if(array_key_exists($username, $_SESSION["users"])) {
-        $error = "Account exists!";
+        $error = "Username already exists!";
         array_push($_SESSION["messages"], $error);
         header("location: /blog/pages/auth/signup.php");
     }
@@ -40,12 +60,12 @@ if(isset($_POST["regform"])) {
                 "username" => $username,
                 "password" => $password
             ];
-            array_push($_SESSION["messages"], "Account Created successfully, please login");
+            array_push($_SESSION["messages"], "Account Created successfully.");
             header("location: /blog/pages/auth/login.php");
         }
         //password doesn't match confirmed password
         else { 
-            $error = "Registration data is invalid.";
+            $error = "Passwords do not match!";
             array_push($_SESSION["messages"], $error);
             header("location: /blog/pages/auth/signup.php");
         }

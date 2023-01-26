@@ -57,7 +57,7 @@
           </div>
           <span>
               <span style="color: #fff; padding: 0 15px"><?= "Hello, " . $_SESSION["current_user"]["username"] ?></span>
-              <a href="/blog/control/logout.php" class="logout">Logout</a>
+              <a href="/blog/control/auth/logout.php" class="logout">Logout</a>
           </span>
         <?php } ?>
       </div>  

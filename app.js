@@ -1,5 +1,3 @@
-console.log("DADADADADA")
-
 const observer = new IntersectionObserver((entry) => {
   const elem = entry[0]
   if (elem.isIntersecting) elem.target.classList.add("show")
@@ -72,6 +70,5 @@ if(alert)
   })
   setTimeout(() => {
     alert.style.display = 'none'
-  }, 5000)
+  }, 10000) //5000
 }
-
