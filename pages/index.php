@@ -1,4 +1,8 @@
-
+<?php
+    if(!isset($_SESSION))
+        session_start();
+$posts = $_SESSION["posts"];
+?>
     <div class="middle">
         <div class="text-container">
           <div class="hidden">
@@ -9,55 +13,30 @@
     </div>
 
     <div class="post-container">
-      <div class="post">
-        <img src="assets/1.jpg" alt="">
-        <h3>MBTI Psychological Types</h3>
-        <p>Have you ever heard someone describe themselves as an INTJ or an ESTP and wondered what those cryptic-sounding letters could mean? What these people are referring to is their personality type based on the Myers-Briggs Type Indicator (MBTI)</p>
-        <div class="user">
-          <img src="assets/bx-user-circle.svg" alt="">
-          <p>Fatma Emad</p>
+      <?php
+          foreach($posts as $post) {
+              $users = array_values($_SESSION["users"]);
+              $user_id = $post["user_id"];
+              $user = $users[$user_id-1];
+      ?>
+        <div class="post">
+          <img src="<?="/blog/assets/".$post['img']?>" alt="">
+          <h3><?= $post["title"] ?></h3>
+          <p><?= $post["body"] ?></p>
+          <div class="user">
+            <img src="assets/bx-user-circle.svg" alt="">
+            <p><?= $user["username"] ?></p>
+          </div>
         </div>
-      </div>
+      <?php } ?>
 
-      <div class="post">
-        <img src="assets/9.jpg" alt="">
-        <h3>Physiognomy vs Graphology</h3>
-        <p>Two different methods for personality traits analysis</p>
-        <div class="user">
-          <img src="assets/bx-user-circle.svg" alt="">
-          <p>Maram Ahmed</p>
-        </div>
-      </div>
-
-      <div class="post">
-        <img src="assets/3.jpg" alt="">
-        <h3>Title</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam a minima quis doloremque id earum minus quasi quae veniam, esse non, totam voluptates nisi pariatur! Ab quo autem amet illo?</p>
-        <div class="user">
-          <img src="assets/bx-user-circle.svg" alt="">
-          <p>Baher Mohamed</p>
-        </div>
-      </div>
-
-      <div class="post">
-        <img src="assets/10.jpg" alt="">
-        <h3>Software engineer</h3>
-        <p>As a software engineer, you'll work in a constantly evolving environment, due to technological advances and the strategic direction of the organisation you work for. You'll create, maintain, audit and improve systems to meet particular needs, often as advised by a systems analyst or architect, testing both hard and software systems to diagnose and resolve system faults</p>
-        <div class="user">
-          <img src="assets/bx-user-circle.svg" alt="">
-          <p>Shehab Mohamed</p>
-        </div>
-      </div>
-
-      <div class="post">
-        <img src="assets/4.jpg" alt="">
-        <h3>Where can I get some?</h3>
-        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words et</p>
-        <div class="user">
-          <img src="assets/bx-user-circle.svg" alt="">
-          <p>Mohamed Gamal</p>
-        </div>
-      </div>
+      <?php 
+        if(empty($_SESSION['posts']))
+        {
+            $message="There are no posts available";
+            array_push($_SESSION['messages'],$message);
+        }
+      ?>
 
   </body>
 </html>

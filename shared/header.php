@@ -50,7 +50,7 @@
         </span>
         <?php } else { ?>
           <div class="left-side">
-            <a href="/blog/index.php">
+            <a href="/blog/pages/index.php">
               <span class="logo"> e<span>B</span>log </span>
             </a>
             <button id="create-post">Create Post</button>

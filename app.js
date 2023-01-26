@@ -70,5 +70,5 @@ if(alert)
   })
   setTimeout(() => {
     alert.style.display = 'none'
-  }, 10000) //5000
+  }, 5000)
 }
