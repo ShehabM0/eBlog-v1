@@ -1,61 +1,50 @@
 <?php
-require_once "../../shared/header.php";
+    require_once "../../shared/header.php";
+    if(!isset($_SESSION))
+        session_start();
+
+    // if current user is a visitor (not logged-in)
+    // then obviously he doens't have any posts.
+    if(!isset($_SESSION["current_user"]))
+    {
+        header("Error404 Not Found", true, 404);
+        header("location: /blog/404.php");
+    }
+
+    $posts = $_SESSION["posts"];
+    $user_id = $_SESSION["current_user"]["id"];
+    $no_posts = true;
 ?>
-        <!-- <p id="no-post">You don't have any posts yet.</p> -->
 
+        <!-- loading user posts -->
         <div class="mypost-container">
-            <a href="/blog/pages/posts/post.php?id=1" id="post-link">
-                <div class="mypost">
-                    <img src="/blog/assets/1.jpg" alt="">
-                    <h3>Software engineer</h3>
-                    <p>As a software engineer, you'll work in a constantly evolving environment, due to technological advances and the strategic direction of the organisation you work for. You'll create, maintain, audit and improve systems to meet particular needs, often as advised by a systems analyst or architect, testing both hard and software systems to diagnose and resolve system faults</p>
-                    <div class="post-user">
-                    <img src="/blog/assets/bx-user-circle.svg" alt="">
-                    <p>shehab mohamed</p>
-                    </div>
-                </div>
-            </a>
+        <?php
+            foreach($posts as $post) 
+            {
+                if($user_id===$post["user_id"])
+                {
+                    $no_posts=false;
+        ?>
+                    <a href="/blog/pages/posts/post.php?id=<?= $post["id"] ?>" id="post-link">
+                        <div class="mypost">
+                            <img src="<?="/blog/assets/".$post["img"]?>" alt="">
+                            <h3><?= $post["title"] ?></h3>
+                            <p><?= $post["body"] ?></p>
+                            <div class="post-user">
+                                <img src="/blog/assets/bx-user-circle.svg" alt="">
+                                <p><?= $_SESSION["current_user"]["username"] ?></p>
+                            </div>
+                        </div>
+                    </a>
+            <?php } ?>
+        <?php } ?>
 
-
-            <a href="/blog/pages/posts/post.php?id=1" id="post-link">
-                <div class="mypost">
-                    <img src="/blog/assets/1.jpg" alt="">
-                    <h3>Software engineer</h3>
-                    <p>As a software engineer, you'll work in a constantly evolving environment, due to technological advances and the strategic direction of the organisation you work for. You'll create, maintain, audit and improve systems to meet particular needs, often as advised by a systems analyst or architect, testing both hard and software systems to diagnose and resolve system faults</p>
-                    <div class="post-user">
-                    <img src="/blog/assets/bx-user-circle.svg" alt="">
-                    <p>shehab mohamed</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <a href="/blog/pages/posts/post.php?id=1" id="post-link">
-                <div class="mypost">
-                    <img src="/blog/assets/1.jpg" alt="">
-                    <h3>Software engineer</h3>
-                    <p>As a software engineer, you'll work in a constantly evolving environment, due to technological advances and the strategic direction of the organisation you work for. You'll create, maintain, audit and improve systems to meet particular needs, often as advised by a systems analyst or architect, testing both hard and software systems to diagnose and resolve system faults</p>
-                    <div class="post-user">
-                    <img src="/blog/assets/bx-user-circle.svg" alt="">
-                    <p>shehab mohamed</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="/blog/pages/posts/post.php?id=1" id="post-link">
-                <div class="mypost">
-                    <img src="/blog/assets/1.jpg" alt="">
-                    <h3>Software engineer</h3>
-                    <p>As a software engineer, you'll work in a constantly evolving environment, due to technological advances and the strategic direction of the organisation you work for. You'll create, maintain, audit and improve systems to meet particular needs, often as advised by a systems analyst or architect, testing both hard and software systems to diagnose and resolve system faults</p>
-                    <div class="post-user">
-                    <img src="/blog/assets/bx-user-circle.svg" alt="">
-                    <p>shehab mohamed</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
+        <!-- user has no posts -->
+        <?php if($no_posts) { ?>
+            <p id="no-post">You don't have any posts yet.</p>
+        <?php } ?>
+            
+        <!-- create-post window overlay -->
         <div class="create-modal overlay"></div>
-
     </body>
 </html>
