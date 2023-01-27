@@ -19,11 +19,11 @@ button{
     cursor: pointer;
 }
 
-.img-container {
+.auth-img-container {
     display: -webkit-box;
 }
 
-.img-container img {
+.auth-img-container img {
     object-fit: cover;
     height: 100%;
     border-radius: 15px 0px 0px 15px;

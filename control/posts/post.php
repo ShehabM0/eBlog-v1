@@ -12,7 +12,7 @@ function checkForm($array, $keys)
     return true;
 }
 
-function checkLength($array, $min_length=3, $max_length=100)
+function checkLength($array, $min_length=3, $max_length=1000)
 {
     foreach($array as $value)
         if(strlen($value) > $max_length || strlen($value) < $min_length)
@@ -56,25 +56,15 @@ if(isset($_POST["post-create-form"])) {
         
         // push new post to other posts in session
         array_push($_SESSION['posts'], $add_post);
-
         $message = "Your post has been created successfully.";
-        array_push($_SESSION['messages'], $message);
-        header("location:/blog/pages/posts/post.php?id=$new_post_id");
     }
-    // else: data is invalid, error & redirect to create
+    // data is missing or empty
     else if(!$valid_form)
-    {
         $message = "Invalid form.";
-        array_push($_SESSION['messages'], $message);
-        header("location:/blog/pages/posts/post.php");
-    }
-    // else: form is invalid (i.e. data is missing or empty)
     else
-    {
         $message="Invalid data.";
-        array_push($_SESSION['messages'], $message);
-        header("location:/blog/pages/posts/post.php");
-    }
+    array_push($_SESSION['messages'], $message);
+    header("location:/blog/");
 }
 
 
@@ -85,51 +75,38 @@ if(isset($_POST["post-update-form"])) {
     $img = $_POST['image'];
     $body = $_POST['body'];
 
-    $valid_input = checkLength([$title,$body]);
+    $valid_input = checkLength([$title, $body]);
     $valid_img = checkImg($img);
 
-    // Get post id by the given id
+    // Get post id by the given id from req
     $post_id = $_POST['post_id'];
-
-    //edit post
-        //if: check post exists & check if user is the one who created the post
-        // else: reject, 401 Unauthorized (user is trying to update someone else's post)
 
     if($valid_form && $valid_input && $valid_img)
     {
-        // update post using the new values
         // Update the post in session posts
-        $_SESSION['posts'][$post_id-1]['title']=$title;
-        $_SESSION['posts'][$post_id-1]['img']=$img;
-        $_SESSION['posts'][$post_id-1]['body']=$body;
+        $_SESSION['posts'][$post_id-1]['title'] = $title;
+        $_SESSION['posts'][$post_id-1]['img'] = $img;
+        $_SESSION['posts'][$post_id-1]['body'] = $body;
     
-        // Redirect to show.php with id = post_id
         $message="Your Post has been updated successfully.";
         array_push($_SESSION['messages'],$message);
         header("location: /blog/pages/posts/post.php?id=$post_id");
     }
-    // else: form is invalid (something's missing or empty)
+    // something's missing or empty
     else if(!$valid_form)
-    {
         $message = "Invalid form.";
-        array_push($_SESSION['messages'], $message);
-        header("location: /blog/pages/posts/post.php?id=$post_id");
-    }
-    // else: data is invalid, error & redirect to edit with id = post_id
     else
-    {
         $message = "Invalid data.";
-        array_push($_SESSION['messages'], $message);
-        header("location: /blog/pages/posts/post.php?id=$post_id");
-    }
+    array_push($_SESSION['messages'], $message);
+    header("location: /blog/pages/posts/post.php?id=$post_id");
 }
 
 
 if(isset($_POST["post-delete-form"])) {
-    $post_id=$_POST['id']; 
+    $post_id = $_POST['id']; 
     
     // remove the post from session posts
-    unset($_SESSION['posts'][$post_id-1]);
+    unset($_SESSION['posts'][$post_id]);
     
     // reset the index in session posts
     $keys = array_keys($_SESSION['posts']);
@@ -137,7 +114,7 @@ if(isset($_POST["post-delete-form"])) {
     for($counter = 0; $counter < count($keys); $counter++)
     {
         $keys[$counter] = $counter;
-        $values[$counter]['id'] = $counter+1;
+        $values[$counter]['id'] = $counter + 1;
     }
     unset($_SESSION["posts"]);
     $result = array_combine($keys, $values);

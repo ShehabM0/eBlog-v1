@@ -35,6 +35,7 @@
   </head>
   <body>
 
+    <!-- page header  -->
     <div class="header">
       <div class="nav-container">
         <?php if(!isset($_SESSION["current_user"])) { ?>
@@ -62,13 +63,13 @@
       </div>  
     </div>  
 
-
+    <!-- create post window  -->
     <div class="create-modal modal-container">
       <div class="create-modal modal-header">
         <button class="close-btn" id="create-close-btn">&times;</button>
       </div>
       <div class="create-modal modal-body">
-        <form action="http://stackoverflow.com/" method="POST">
+        <form action="/blog/control/posts/post.php" method="POST">
           <!-- title -->
           <label for="title">
             Title
@@ -78,6 +79,7 @@
             type="text"
             id="title"
             placeholder="type the post title.."
+            name="title"
           />
           <!-- image -->
           <label for="image">
@@ -87,7 +89,8 @@
           <input
             type="text"
             id="image"
-            placeholder="type the post img number.."
+            placeholder="pick an img number from 1-11"
+            name="image"
           />
           <!-- body  -->
           <label for="body">
@@ -98,6 +101,7 @@
             type="text"
             id="text-body"
             placeholder="type the post body.."
+            name="body"
           ></textarea>
           <!-- buttons -->
           <input
@@ -105,17 +109,16 @@
             value="Create"
             id="submit-button"
             class="buttons"
+            name="post-create-form"
           />
         </form>
+      </div>
+    </div>
 
-
-          
+    <!-- page alerts   -->
     <?php foreach($_SESSION["messages"] as $msg) { ?>
       <div class="alert-msg">
         <button class="close-btn">&times;</button>
         <p><?= $msg ?></p>
       </div>
     <?php } $_SESSION["messages"] = []; ?> 
-
-      </div>
-    </div>

@@ -1,60 +1,87 @@
 <?php
 require_once "../../shared/header.php";
+
+// post-create-form validation //
+function checkForm($array, $keys) {
+  foreach($keys as $key)
+      if(!isset($array["$key"]) || empty($array["$key"]))
+          return false;
+  return true;
+}
+
+
+// post and user authorization //
+function getUsername($post)
+{
+  $user_id = $post["user_id"];
+  $user = array_values($_SESSION["users"])[$user_id - 1];
+  return $user["username"];
+}
+
+$post_arr_id = $_GET["id"] - 1; // minus 1 as zero indexed array
+$post = $_SESSION["posts"][$post_arr_id] ?? null;
+$post_user_id = $_SESSION["posts"][$post_arr_id]["user_id"];
+
+// if current_user not the post owner,
+// then definitely he can't edit the post he currently visiting
+$valid_edit_post = true;
+
+if(!isset($_SESSION["current_user"]))
+  $valid_edit_post = false;
+else
+  $current_user_id = $_SESSION["current_user"]["id"];
+
+// geeting username of the post creator
+$username = getUsername($post);
+
+// post is not found
+if($post == null) {
+  header("Error404 Not Found", true, 404);
+  header("location: /blog/404.php");
+}
+
+// The user who is trying to edit, is NOT the post creator
+if($post_user_id != $current_user_id)
+{
+  $valid_edit_post = false;
+}
 ?>
 
-      <!-- page post  -->
+      <!-- page background  -->
       <div class="img-bg"></div>
 
+      <!-- page post  -->
       <div class="img-container">
         <div class="img">
-          <img src="/blog/assets/11.jpg" alt="" />
+          <img src="<?="/blog/assets/".$post['img']?>" alt="" />
         </div>
       </div>
 
       <div class="post-title">
-        <h3>Software Developer vs Software Engineer</h3>
+        <h3><?= $post["title"] ?></h3>
         <div class="user">
           <img src="/blog/assets/bx-user-circle.svg" alt="" />
-          <p>Shehab Mohamed</p>
+          <p><?= $username ?></p>
         </div>
       </div>
 
       <div class="post-body">
-        <p>
-          As a software engineer, you'll work in a constantly evolving
-          environment, due to technological advances and the strategic direction
-          of the organisation you work for. You'll create, maintain, audit and
-          improve systems to meet particular needs, often as advised by a systems
-          analyst or architect, testing both hard and software systems to diagnose
-          and resolve system faults Contrary to popular belief, Lorem Ipsum is not
-          simply random text. It has roots in a piece of classical Latin
-          literature from 45 BC, making it over 2000 years old. Richard
-          McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-          looked up one of the more obscure Latin words, consectetur, from a Lorem
-          Ipsum passage, and going through the cites of the word in classical
-          literature, discovered the undoubtable source. Lorem Ipsum comes from
-          sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-          Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a
-          treatise on the theory of ethics, very popular during the Renaissance.
-          The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
-          from a line in section 1.10.32. The standard chunk of Lorem Ipsum used
-          since the 1500s is reproduced below for those interested. Sections
-          1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-          also reproduced in their exact original form, accompanied by English
-          versions from the 1914 translation by H. Rackham.
-        </p>
+        <p><?= $post["body"] ?></p>
       </div>
 
       <!-- post buttons  -->
-      <div class="buttons">
-        <div class="buttons-container">
-          <button class="Edit" id="edit-post">Edit</button>
-          <button form="fname" type="submit" class="Delete" name="post-delete-form" value="DELETE">Delete</button>
-            <form action="/blog/control/post.php" method="post" id="fname">
-                  <input type="hidden" name="id" value="1">
-            </form>
+      <?php if($valid_edit_post) { ?>
+        <div class="buttons">
+          <div class="buttons-container">
+            <button class="Edit" id="edit-post">Edit</button>
+            <button form="fname" type="submit" class="Delete" name="post-delete-form" value="DELETE">Delete</button>
+              <form action="/blog/control/posts/post.php" method="POST" id="fname">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="id" value="<?= $post_arr_id ?>">
+              </form>
+          </div>
         </div>
-      </div>
+      <?php } ?>
 
       <!-- edit post form -->
       <div class="edit-modal modal-container">
@@ -65,13 +92,14 @@ require_once "../../shared/header.php";
           <form action="/blog/control/posts/post.php" method="POST">
             <!-- title -->
             <label for="title">
-              Title
+              Title 
             </label>
             <input
               type="text"
               id="title"
               placeholder="type the post title.."
               name="title"
+              value="<?= $post["title"] ?>"
             />
             <!-- image -->
             <label for="image">
@@ -82,6 +110,7 @@ require_once "../../shared/header.php";
               id="image"
               placeholder="type the post img number.."
               name="image"
+              value="<?= $post["img"] ?>"
             />
             <!-- body  -->
             <label for="body">
@@ -92,7 +121,9 @@ require_once "../../shared/header.php";
               id="body"
               placeholder="type the post body.."
               name="body"
-            ></textarea>
+            > <?= $post["body"] ?> </textarea>
+            <!-- post id that will be used to update the post (post identifier) -->
+            <input type="hidden" name="post_id" value="<?= $post["id"] ?>">
             <!-- buttons -->
             <input
               type="submit"

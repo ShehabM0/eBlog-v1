@@ -25,7 +25,6 @@ function checkPass($array, $key)
 }
 
 if(isset($_POST["regform"])) {
-    // username, password, password_confirm
     $valid_data = checkForm($_POST, ["username", "password", "password_confirm"]);
     $valid_username = checkUsername($_POST, "username");
     $valid_pass = checkPass($_POST, "password");
@@ -44,17 +43,17 @@ if(isset($_POST["regform"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $password_conf = $_POST["password_confirm"];
+
     // If account already exists, redirect to register
     if(array_key_exists($username, $_SESSION["users"])) {
         $error = "Username already exists!";
         array_push($_SESSION["messages"], $error);
         header("location: /blog/pages/auth/signup.php");
     }
-
     // New user
     else {
         if($password == $password_conf) {
-            //add user to users list
+            // add user to users list
             $_SESSION["users"]["$username"] = [
                 "id" => count($_SESSION["users"]) + 1,
                 "username" => $username,
@@ -63,7 +62,7 @@ if(isset($_POST["regform"])) {
             array_push($_SESSION["messages"], "Account Created successfully.");
             header("location: /blog/pages/auth/login.php");
         }
-        //password doesn't match confirmed password
+        // password doesn't match confirmed password
         else { 
             $error = "Passwords do not match!";
             array_push($_SESSION["messages"], $error);
@@ -92,14 +91,14 @@ if(isset($_POST["loginform"])) {
             $_SESSION["current_user"] = $_SESSION["users"]["$username"];
             header("location: /blog/");
         }
-        //username exists but wrong password
+        // username exists but wrong password
         else {
             $error = "Incorrect password";
             array_push($_SESSION["messages"], $error);
             header("location: /blog/pages/auth/login.php");
         }
     }
-    //username doesn't exist which means no account has been created yet
+    // username doesn't exist which means no account has been created yet
     else {
         $error = "Create an account first.";
         array_push($_SESSION["messages"], $error);
