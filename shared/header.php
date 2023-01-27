@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/blog/css/post.css">
     <link rel="stylesheet" href="/blog/css/create.css">
     <link rel="stylesheet" href="/blog/css/edit.css">
+    <link rel="stylesheet" href="/blog/css/myposts.css">
     <title>eBlog</title>
 
     <!-- fonts -->
@@ -54,6 +55,7 @@
               <span class="logo"> e<span>B</span>log </span>
             </a>
             <button id="create-post">Create Post</button>
+            <a href="/blog/pages/posts/myposts.php"><button id="create-post">My posts</button></a>
           </div>
           <span>
               <span style="color: #fff; padding: 0 15px"><?= "Hello, " . $_SESSION["current_user"]["username"] ?></span>

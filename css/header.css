@@ -26,9 +26,8 @@ img{
     position: fixed;
     width: 100%;
     padding: 0 100px;
-    /* handle card's hover overflow over the nav */
-    /* top: 0; 
-    left: 0; */
+    top: 0; 
+    left: 0;
     z-index: 200;
 }
 
