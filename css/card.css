@@ -5,13 +5,18 @@
     --wht: #fff;
 }
 
+#post-link {
+    color: var(--blk1);
+    width: 50%;
+}
+
 .post-container{
+    margin: 40px auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-content: center;
-    margin: 40px;
     gap: 1.5rem;
-    padding-left: 12px;
+    margin-left: 20px;
 }
 
 .post-container .post {
