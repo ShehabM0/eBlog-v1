@@ -78,6 +78,7 @@
             <span style="color: red">*</span>
           </label>
           <input
+            class="equal-width"
             type="text"
             id="title"
             placeholder="type the post title.."
@@ -89,6 +90,7 @@
             <span style="color: red">*</span>
           </label>
           <input
+            class="equal-width"
             type="text"
             id="image"
             placeholder="pick an img number from 1-11"
@@ -100,6 +102,7 @@
             <span style="color: red">*</span>
           </label>
           <textarea
+            class="equal-width"
             type="text"
             id="text-body"
             placeholder="type the post body.."
@@ -107,6 +110,7 @@
           ></textarea>
           <!-- buttons -->
           <input
+            class="equal-width"
             type="submit"
             value="Create"
             id="submit-button"

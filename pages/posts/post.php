@@ -95,6 +95,7 @@ if($post_user_id != $current_user_id)
               Title 
             </label>
             <input
+              class="equal-width"
               type="text"
               id="title"
               placeholder="type the post title.."
@@ -106,6 +107,7 @@ if($post_user_id != $current_user_id)
               Image
             </label>
             <input
+              class="equal-width"
               type="text"
               id="image"
               placeholder="type the post img number.."
@@ -117,6 +119,7 @@ if($post_user_id != $current_user_id)
               Body
             </label>
             <textarea
+              class="equal-width"
               type="text"
               id="body"
               placeholder="type the post body.."
@@ -126,6 +129,7 @@ if($post_user_id != $current_user_id)
             <input type="hidden" name="post_id" value="<?= $post["id"] ?>">
             <!-- buttons -->
             <input
+              class="equal-width"            
               type="submit"
               value="Edit"
               id="submit-button"

@@ -23,16 +23,16 @@ require_once "../../shared/header.php";
               required="required"
               name="password"
             />
-            <input
-              type="submit"
-              id="submit-btn"
-              value="Log In"
-              name="loginform"
-            />
+            <div class="p-class">
+              <input
+                type="submit"
+                id="submit-btn"
+                value="Log In"
+                name="loginform"
+              />
+              <p>Don't have an account?</p><a href="/blog/pages/auth/signup.php">SignUp</a>
+            </div>
           </form>
-          <div class="p-class">
-            <p>Don't have an account?</p><a href="/blog/pages/auth/signup.php">SignUp</a>
-          </div>
         </div>
       </div>
     </body>
