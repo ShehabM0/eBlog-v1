@@ -1,13 +1,13 @@
-:root{
+:root {
     --wht: #fff;
     --blk1: #172317;
     --blk2: #1a1e12;
     --bv: #8a2be2;
 }
-a{
+a {
     text-decoration: none;
 }
-img{
+img {
     width: 100%;
     user-select: none;
     user-select: none;
@@ -15,7 +15,7 @@ img{
     -webkit-user-select: none;
     -ms-user-select: none;
 }
-button{
+button {
     cursor: pointer;
 }
 
@@ -74,15 +74,13 @@ h2 {
     display: flex;
     justify-content: center;
     margin-top: -100px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     font-weight: 700;
     font-size: 1.5rem;
 }
 
-.p-class {
-    display: flex;
-    position: absolute;
-    bottom: 100px;
+.p-class p {
+    display: inline;
 }
 
 .p-class a {

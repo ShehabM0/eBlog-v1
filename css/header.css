@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Poppins', sans-serif;
     font-size: 22px;
     margin: 0;
@@ -6,22 +6,22 @@
     scroll-behavior: smooth;
     box-sizing: border-box;
 }
-:root{
+:root {
     --wht: #fff;
     --blk1: #172317;
     --blk2: #1a1e12;
     --bv: #8a2be2;
 }
-a{
+a {
     text-decoration: none;
 }
-img{
+img {
     width: 100%;
 }
 
 
 
-.header{
+.header {
     background-color: var(--blk2);
     position: fixed;
     width: 100%;
@@ -31,14 +31,14 @@ img{
     z-index: 200;
 }
 
-.header .nav-container{
+.header .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 0;
 }
 
-.header .nav-container .logo{
+.header .nav-container .logo {
     color:var(--wht);
     font-size: 1.35rem;
     font-weight: 600;
@@ -48,20 +48,20 @@ img{
     -ms-user-select: none;
 }
 
-.header .nav-container .logo span{
+.header .nav-container .logo span {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--bv);
 }
 
-.header .nav-container span:nth-child(2) .login, .signup, .logout{
+.header .nav-container span:nth-child(2) .login, .signup, .logout {
     color: var(--wht);
     padding: 5px 10px;
     border: 1.5px solid;
     border-radius: 5px;
 }
 
-.login:hover, .signup:hover, .logout:hover{
+.login:hover, .signup:hover, .logout:hover {
     background-color: var(--bv);
     transition: 0.3s;
 }

@@ -1,13 +1,13 @@
-:root{
+:root {
     --wht: #fff;
     --blk1: #172317;
     --blk2: #1a1e12;
     --bv: #8a2be2;
 }
-a{
+a {
     text-decoration: none;
 }
-img{
+img {
     width: 100%;
 }
 
@@ -43,10 +43,9 @@ label {
 .edit-modal.modal-container.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-    
 }
 
-.edit-modal.modal-header{
+.edit-modal.modal-header {
     display: flex;
     justify-content: flex-end;
     margin-bottom: -40px;
@@ -64,33 +63,31 @@ label {
     border-radius: 100px;
 }
 
-.edit-modal.modal-body form label, input, textarea {
-    display: block;
-    width: 50%;
-    margin: 0 auto;
+.edit-modal.modal-body form label {
+    padding-left: 25%;
+    font-weight: 500;
 }
 
 .edit-modal.modal-body form input, textarea {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
     border: 2px solid black;
     border-radius: 8px;
     resize: none;
 }
 
-.edit-modal.modal-body form textarea {
-    width: 46%;
+.edit-modal.modal-body form .equal-width {
+    width: 50%;
 }
 
-.edit-modal.modal-body form label {
-    font-weight: 500;
-}
-
-.edit-modal.modal-body form #submit-button{
+.edit-modal.modal-body form #submit-button {
     margin-top: 20px;
     cursor: pointer;
     font-weight: 600;
 }
 
-.edit-modal.modal-body form #submit-button:hover{
+.edit-modal.modal-body form #submit-button:hover {
     color: var(--wht);
     background-color: var(--bv);
     transition: 0.3s;
